@@ -8,11 +8,16 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
   application:
     name: userservice #user服务名称
+  cloud:
+    inetutils:
+      use-only-site-local-interfaces: true #只使用本地主机的ip地址(防止连接到VMware地址)
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
-    fetch-registry: false
+#    fetch-registry: false
+#  instance:
+#    appname: userservice
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
