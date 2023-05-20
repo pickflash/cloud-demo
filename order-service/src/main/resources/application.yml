@@ -15,6 +15,9 @@ eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
+userservice:
+  ribbon:
+    NFLoadBalanxerRuleClassName: com.netflix.loadbalancer.RandomRule   #将负载均衡规则改为随机(只针对单一服务)----方法2
 #    fetch-registry: false
 #  instance:
 #    appname: orderservice
