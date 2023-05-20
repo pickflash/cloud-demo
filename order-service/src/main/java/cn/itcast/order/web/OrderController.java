@@ -24,8 +24,12 @@ public class OrderController {
     public Order queryOrderByUserId(@PathVariable("orderId") Long orderId) {
         // 1,根据id查询订单
         Order order=orderService.queryOrderById(orderId);
-        //2,利用RestTemplate发起http请求，查询用户
-        String url="http://localhost:8081/user/"+order.getUserId();
+
+        /*//2,利用RestTemplate发起http请求，查询用户
+        String url="http://localhost:8081/user/"+order.getUserId();*/
+
+        //使用eureka服务名称代替地址
+        String url="http://userservice/user/"+order.getUserId();
                                                  //返回值类型
         User user = restTemplate.getForObject(url, User.class);
         //3，封装user到order中
